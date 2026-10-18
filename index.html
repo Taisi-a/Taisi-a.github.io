@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Портфолио Таисии Лепиловой: сайт-визитка ведущего и айдентика мероприятия «Катран».">
+<title>Таисия Лепилова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a Figma-like canvas — each work sits in a frame with its frame label above it, cases follow one after another */
+:root{
+  --bg:#ECEDEF; --surface:#F8F8F9; --fg:#15161A; --muted:#5C5F68; --line:#D2D4D9; --accent:#7A1414;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111215; --surface:#1A1B1F; --fg:#ECEDEF; --muted:#9A9DA6; --line:#2D2F35; --accent:#E68A80; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111215; --surface:#1A1B1F; --fg:#ECEDEF; --muted:#9A9DA6; --line:#2D2F35; --accent:#E68A80; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;padding-block:56px 40px;display:flex;flex-direction:column;gap:120px}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;line-height:1.1}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+
+/* intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:end}
+.intro h1{font-size:clamp(38px,7vw,84px);letter-spacing:-.02em}
+.intro .role{font-size:clamp(18px,2vw,22px);font-weight:500;margin-top:20px}
+.intro .about{color:var(--muted);max-width:56ch;margin-top:16px}
+.contacts{display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--line);padding-left:24px}
+.contact{display:flex;flex-direction:column;gap:2px}
+.contact .v{font-family:var(--mono);font-size:15px;user-select:all;overflow-wrap:anywhere}
+.index{display:flex;flex-wrap:wrap;gap:12px 28px;border-top:1px solid var(--line);padding-top:20px;margin-top:-72px}
+.index a{font-weight:500;text-decoration:none;display:flex;gap:10px;align-items:baseline}
+.index a span{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.index a:hover{text-decoration:underline}
+
+/* case */
+.case{display:flex;flex-direction:column;gap:40px;scroll-margin-top:24px}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;align-items:start}
+.case-head h2{font-size:clamp(28px,4vw,46px);margin-top:10px}
+.facts{display:grid;gap:18px}
+.fact{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:0;padding-bottom:0}
+.fact p{max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px}
+.chip{font-size:14px;padding:2px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+
+/* frames */
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure .frame{background:var(--surface);border:1px solid var(--line);overflow:hidden}
+figure img{display:block;width:100%;height:auto}
+figcaption{display:flex;justify-content:space-between;gap:12px}
+figcaption .label:last-child{text-align:right}
+
+.breakpoints{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1.15fr) minmax(0,.62fr);gap:20px;align-items:end}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-weight:500}
+.subhead{font-family:var(--display);font-weight:500;font-size:20px;margin-top:16px;padding-top:28px;border-top:1px solid var(--line)}
+.phones{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:20px;align-items:start}
+.grid-logo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:stretch}
+
+.palette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}
+.sw{display:flex;flex-direction:column;gap:6px}
+.sw i{display:block;aspect-ratio:4/3;max-width:100%;border:1px solid var(--line)}
+.sw b{font-weight:500;font-size:14px;line-height:1.3}
+.sw span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:20px}
+.panel p{color:var(--muted);font-size:15.5px}
+
+footer{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline}
+footer h2{font-size:clamp(22px,3vw,30px)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:15px}
+
+@media (max-width:860px){
+  .wrap{gap:88px;padding-block:32px 32px}
+  .intro,.case-head,.grid-logo{grid-template-columns:minmax(0,1fr)}
+  .intro{gap:28px}
+  .contacts{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}
+  .index{margin-top:-56px}
+  .breakpoints{grid-template-columns:minmax(0,1.6fr) minmax(0,.85fr)}
+  .breakpoints .bp-desktop{grid-column:1/-1}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .fact{grid-template-columns:minmax(0,1fr);gap:4px}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+
+<main class="wrap">
+  <section class="intro">
+    <div>
+      <p class="label">Портфолио</p>
+      <h1>Таисия Лепилова</h1>
+      <p class="role">Дизайн и вёрстка интерфейсов</p>
+      <p class="about">Учусь на 3 курсе МИЭМ НИУ ВШЭ («Информатика и вычислительная техника») и работаю разработчиком в проектах МИЭМ. Здесь две мои дизайн-работы: сайт, который я нарисовала в Figma и сама сверстала, и визуал для университетского мероприятия.</p>
+    </div>
+    <div class="contacts">
+      <div class="contact"><span class="label">Telegram</span><span class="v">@leptp</span></div>
+      <div class="contact"><span class="label">Почта</span><span class="v">taisia.le505@gmail.com</span></div>
+      <div class="contact"><span class="label">GitHub</span><a class="v" href="https://github.com/Taisi-a">github.com/Taisi-a</a></div>
+    </div>
+  </section>
+
+  <nav class="index" aria-label="Работы">
+    <a href="#site">Сайт-визитка ведущего <span>веб · адаптив</span></a>
+    <a href="#katran">«Катран» <span>айдентика мероприятия</span></a>
+  </nav>
+
+  <!-- Case: site -->
+  <section class="case" id="site">
+    <div class="case-head">
+      <div>
+        <p class="label">Веб-дизайн и вёрстка</p>
+        <h2>Сайт-визитка ведущего</h2>
+        <div class="links">
+          <a href="https://taisi-a.github.io/daniil_mavrin_site/">Открыть сайт ↗</a>
+          <a href="https://github.com/Taisi-a/daniil_mavrin_site">Код на GitHub ↗</a>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="label">Задача</span><p>Одностраничный сайт для ведущего мероприятий: кто он, с какими форматами работает, что о нём пишут клиенты и как с ним связаться.</p></div>
+        <div class="fact"><span class="label">Что я сделала</span><p>Продумала структуру, нарисовала макеты в Figma для трёх ширин экрана и сверстала сайт. На телефоне меню убирается в бургер, а фотографии собраны в слайдер.</p></div>
+        <div class="fact"><span class="label">Блоки</span>
+          <div class="chips"><span class="chip">Первый экран</span><span class="chip">Обо мне</span><span class="chip">Опыт</span><span class="chip">Почему выбирают меня</span><span class="chip">Отзывы</span><span class="chip">Контакты</span></div>
+        </div>
+        <div class="fact"><span class="label">Инструменты</span><p>Figma, HTML, CSS, JavaScript (jQuery), GitHub Pages</p></div>
+      </div>
+    </div>
+
+    <div class="breakpoints">
+      <figure class="bp-desktop">
+        <figcaption><span class="label">Desktop</span><span class="label">1260</span></figcaption>
+        <div class="frame"><img src="img/site-desktop.jpg" alt="Первый экран сайта на десктопе: имя ведущего крупным шрифтом, надпись «Ведущий» и фотография" width="1600" height="1117"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Tablet</span><span class="label">800</span></figcaption>
+        <div class="frame"><img src="img/site-tablet.jpg" alt="Первый экран сайта на планшете" width="1000" height="1374" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Mobile</span><span class="label">375</span></figcaption>
+        <div class="frame"><img src="img/site-mobile.jpg" alt="Первый экран сайта на телефоне" width="600" height="1247" loading="lazy"></div>
+      </figure>
+    </div>
+
+    <p class="subhead">Сверстанный сайт</p>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="label">Отзывы · слайдер</span><span class="label">1440</span></figcaption>
+        <div class="frame"><img src="img/live-reviews.jpg" alt="Блок «Еще сомневаетесь?»: карточка отзыва со стрелками и точками слайдера" width="1400" height="1228" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Контакты</span><span class="label">1440</span></figcaption>
+        <div class="frame"><img src="img/live-contacts.jpg" alt="Блок «Контакты»: телефон, WhatsApp, Telegram, Instagram и фото ведущего" width="1400" height="980" loading="lazy"></div>
+      </figure>
+    </div>
+    <div class="phones">
+      <figure>
+        <figcaption><span class="label">Первый экран</span><span class="label">375</span></figcaption>
+        <div class="frame"><img src="img/live-m-hero.jpg" alt="Первый экран сайта на телефоне" width="720" height="1500" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Контакты</span><span class="label">375</span></figcaption>
+        <div class="frame"><img src="img/live-m-contacts.jpg" alt="Контакты на телефоне: четыре карточки друг под другом" width="720" height="1770" loading="lazy"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Case: Katran -->
+  <section class="case" id="katran">
+    <div class="case-head">
+      <div>
+        <p class="label">Айдентика</p>
+        <h2>«Катран»</h2>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="label">Задача</span><p>Визуал для студенческого мероприятия: логотип, афиши, анонсы, посты и стикеры.</p></div>
+        <div class="fact"><span class="label">Носители</span>
+          <div class="chips"><span class="chip">Логотип</span><span class="chip">Брендбук</span><span class="chip">Афиши</span><span class="chip">Анонсы</span><span class="chip">Посты</span><span class="chip">Стикеры</span></div>
+        </div>
+        <div class="fact"><span class="label">Инструменты</span><p>Figma, Illustrator</p></div>
+      </div>
+    </div>
+
+    <div class="grid-logo">
+      <figure>
+        <figcaption><span class="label">Логотип</span></figcaption>
+        <div class="frame"><img src="img/katran-logo.jpg" alt="Логотип «Катран»: буквы на игральных картах и на барабанах игрового автомата" width="1300" height="1300" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Палитра</span></figcaption>
+        <div class="panel">
+          <div class="palette">
+            <div class="sw"><i style="background:#470507"></i><b>Бордо</b><span>#470507</span></div>
+            <div class="sw"><i style="background:#680003"></i><b>Вишня</b><span>#680003</span></div>
+            <div class="sw"><i style="background:#1E2C46"></i><b>Ночь</b><span>#1E2C46</span></div>
+            <div class="sw"><i style="background:#B48D66"></i><b>Золото</b><span>#B48D66</span></div>
+            <div class="sw"><i style="background:#E6DFD5"></i><b>Карта</b><span>#E6DFD5</span></div>
+            <div class="sw"><i style="background:#B3B9C9"></i><b>Сталь</b><span>#B3B9C9</span></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="label">Афиша</span><span class="label">A4</span></figcaption>
+        <div class="frame"><img src="img/katran-poster.jpg" alt="Афиша-коллаж «Катран»: АП’25, Царская усадьба, 8.02" width="1300" height="1839" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Афиша с QR-кодом</span><span class="label">A4</span></figcaption>
+        <div class="frame"><img src="img/katran-poster-qr.jpg" alt="Афиша: название «Катран» на гранях кубика, на верхней грани QR-код на Telegram-канал" width="1300" height="1839" loading="lazy"></div>
+      </figure>
+    </div>
+
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="label">Анонс</span><span class="label">1:1</span></figcaption>
+        <div class="frame"><img src="img/katran-secret.jpg" alt="Квадратный анонс «Тайна Катрана»: юноша в костюме за барной стойкой" width="1300" height="1300" loading="lazy"></div>
+      </figure>
+      <figure>
+        <figcaption><span class="label">Анонс</span><span class="label">1:1</span></figcaption>
+        <div class="frame"><img src="img/katran-detective.jpg" alt="Квадратный анонс «Интерактивный детектив. Часть 2»: силуэт мужчины в шляпе у зеркала" width="1300" height="1300" loading="lazy"></div>
+      </figure>
+    </div>
+
+    <figure>
+      <figcaption><span class="label">Серия постов для соцсетей</span><span class="label">3 × 1:1</span></figcaption>
+      <div class="frame"><img src="img/katran-posts.jpg" alt="Три поста: «Решит судьба», «Жизнь — игра», «Удача ждёт»" width="2000" height="564" loading="lazy"></div>
+    </figure>
+
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="label">Стикер</span></figcaption>
+        <div class="frame"><img src="img/katran-stickers.jpg" alt="Стикер: веер игральных карт и две фишки казино" width="1300" height="1308" loading="lazy"></div>
+      </figure>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Контакты</h2>
+    <div class="row"><span>Telegram: @leptp</span><span>taisia.le505@gmail.com</span></div>
+  </footer>
+</main>
+
+</body>
+</html>

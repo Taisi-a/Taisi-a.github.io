@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LinguaFlow — кейс Таисии Лепиловой: мобильное приложение, которое превращает заметки после занятий с репетитором в карточки для повторения.">
+<title>LinguaFlow — Таисия Лепилова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a Figma-like canvas — each work sits in a frame with its frame label above it, cases follow one after another */
+:root{
+  --bg:#ECEDEF; --surface:#F8F8F9; --fg:#15161A; --muted:#5C5F68; --line:#D2D4D9; --accent:#7A1414;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111215; --surface:#1A1B1F; --fg:#ECEDEF; --muted:#9A9DA6; --line:#2D2F35; --accent:#E68A80; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111215; --surface:#1A1B1F; --fg:#ECEDEF; --muted:#9A9DA6; --line:#2D2F35; --accent:#E68A80; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;padding-block:56px 40px;display:flex;flex-direction:column;gap:120px}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;line-height:1.1}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+
+/* intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:end}
+.intro h1{font-size:clamp(38px,7vw,84px);letter-spacing:-.02em}
+.intro .role{font-size:clamp(18px,2vw,22px);font-weight:500;margin-top:20px}
+.intro .about{color:var(--muted);max-width:56ch;margin-top:16px}
+.contacts{display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--line);padding-left:24px}
+.contact{display:flex;flex-direction:column;gap:2px}
+.contact .v{font-family:var(--mono);font-size:15px;user-select:all;overflow-wrap:anywhere}
+.index{display:flex;flex-wrap:wrap;gap:12px 28px;border-top:1px solid var(--line);padding-top:20px;margin-top:-72px}
+.index a{font-weight:500;text-decoration:none;display:flex;gap:10px;align-items:baseline}
+.index a span{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.index a:hover{text-decoration:underline}
+
+/* case */
+.case{display:flex;flex-direction:column;gap:40px;scroll-margin-top:24px}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;align-items:start}
+.case-head h2{font-size:clamp(28px,4vw,46px);margin-top:10px}
+.facts{display:grid;gap:18px}
+.fact{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:0;padding-bottom:0}
+.fact p{max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px}
+.chip{font-size:14px;padding:2px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+
+/* frames */
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure .frame{background:var(--surface);border:1px solid var(--line);overflow:hidden}
+figure img{display:block;width:100%;height:auto}
+figcaption{display:flex;justify-content:space-between;gap:12px}
+figcaption .label:last-child{text-align:right}
+
+.breakpoints{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1.15fr) minmax(0,.62fr);gap:20px;align-items:end}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-weight:500}
+.subhead{font-family:var(--display);font-weight:500;font-size:20px;margin-top:16px;padding-top:28px;border-top:1px solid var(--line)}
+.phones{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:20px;align-items:start}
+.grid-logo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:stretch}
+
+.palette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}
+.sw{display:flex;flex-direction:column;gap:6px}
+.sw i{display:block;aspect-ratio:4/3;max-width:100%;border:1px solid var(--line)}
+.sw b{font-weight:500;font-size:14px;line-height:1.3}
+.sw span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:20px}
+.panel p{color:var(--muted);font-size:15.5px}
+
+footer{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline}
+footer h2{font-size:clamp(22px,3vw,30px)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:15px}
+
+@media (max-width:860px){
+  .wrap{gap:88px;padding-block:32px 32px}
+  .intro,.case-head,.grid-logo{grid-template-columns:minmax(0,1fr)}
+  .intro{gap:28px}
+  .contacts{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}
+  .index{margin-top:-56px}
+  .breakpoints{grid-template-columns:minmax(0,1.6fr) minmax(0,.85fr)}
+  .breakpoints .bp-desktop{grid-column:1/-1}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .fact{grid-template-columns:minmax(0,1fr);gap:4px}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* LinguaFlow */
+.screens{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;align-items:start}
+.screens.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
+.screens .frame{border-radius:14px}
+.screens figure p{font-size:15px;color:var(--muted);margin-top:4px}
+.lead{font-size:clamp(18px,2vw,21px);max-width:62ch}
+.text{display:flex;flex-direction:column;gap:14px;max-width:70ch}
+.text p{color:var(--fg)}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.flow li{display:flex;align-items:center;gap:8px}
+.flow li span{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500}
+.flow li:not(:last-child)::after{content:"→";color:var(--muted)}
+.markers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mk{display:flex;flex-direction:column;gap:6px}
+.mk i{display:block;height:40px;border-radius:6px}
+.mk b{font-weight:500;font-size:15px}
+.mk span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.back{font-weight:500;text-decoration:none}
+.next{counter-reset:n;list-style:none;margin:0;padding:0;display:grid;gap:14px;max-width:70ch}
+.next li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px}
+.next li::before{counter-increment:n;content:counter(n,decimal-leading-zero);font-family:var(--mono);color:var(--muted);font-size:14px;padding-top:3px}
+@media (max-width:860px){
+  .screens{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .markers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){
+  .screens,.screens.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <section class="case">
+    <a class="back" href="./">← Все работы</a>
+    <div class="case-head">
+      <div>
+        <p class="label">Продуктовый дизайн · мобильное приложение</p>
+        <h2>LinguaFlow</h2>
+        <p class="lead" style="margin-top:18px">Приложение для тех, кто занимается английским с репетитором: заметку с занятия оно превращает в карточки и напоминает их повторить.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="label">Проект</span><p>Мой пет-проект. Бэкенд я пишу сама на FastAPI, а в этом кейсе — дизайн мобильной версии.</p></div>
+        <div class="fact"><span class="label">Что сделано</span><p>Основной сценарий из шести экранов, шесть состояний, дизайн-система на переменных и компонентах, кликабельный прототип.</p></div>
+        <div class="fact"><span class="label">Figma</span>
+          <div class="chips"><span class="chip">Variables</span><span class="chip">Text styles</span><span class="chip">Auto layout</span><span class="chip">Components &amp; variants</span><span class="chip">Instance swap</span><span class="chip">Prototype</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screens">
+      <figure><div class="frame"><img src="img/linguaflow/today.webp" alt="Экран «Сегодня»" width="780" height="1688"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/new-note.webp" alt="Экран «Новая заметка»" width="780" height="1688"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/words.webp" alt="Экран «Нашли 9 слов»" width="780" height="1688"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/card-front.webp" alt="Карточка, лицевая сторона" width="780" height="1688"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/card-back.webp" alt="Карточка, оборот с оценками" width="780" height="1688"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/result.webp" alt="Экран «Готово!»" width="780" height="1688"></div></figure>
+    </div>
+
+    <p class="subhead">Откуда взялась задача</p>
+    <div class="text">
+      <p>Я занимаюсь английским с репетитором, и после каждого урока у меня остаётся тетрадь: новые слова, правила, пометки вроде «не путать с come across». Через неделю нужное слово в ней уже не найти, а повторять по тетради неудобно: непонятно, что я уже знаю, а что пора освежить.</p>
+      <p>Приложения-словари решают это наполовину. Каждое слово туда нужно вбивать отдельно, и оно теряет связь с занятием, на котором появилось.</p>
+      <p>Отсюда идея: записываешь заметку как в тетради, приложение само находит в ней английские слова, делает из них карточки и возвращает их на повторение через нужный интервал.</p>
+    </div>
+
+    <p class="subhead">Основной сценарий</p>
+    <ol class="flow" aria-label="Шаги сценария">
+      <li><span>Сегодня</span></li>
+      <li><span>Новая заметка</span></li>
+      <li><span>Слова из заметки</span></li>
+      <li><span>Карточка</span></li>
+      <li><span>Оценка</span></li>
+      <li><span>Итог</span></li>
+    </ol>
+
+    <div class="screens three">
+      <figure>
+        <figcaption><span class="label">01 · Сегодня</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/today.webp" alt="Главный экран: стикер «24 слова ждут повторения», кнопка «Повторить», заметки с занятий" width="780" height="1688" loading="lazy"></div>
+        <p>Главное действие дня — повторить слова, поэтому стикер с их количеством стоит первым. Ниже заметки по датам, а печать с числом дней подряд помогает не бросить.</p>
+      </figure>
+      <figure>
+        <figcaption><span class="label">02 · Новая заметка</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/new-note.webp" alt="Форма заметки: дата, тема и большое поле для текста" width="780" height="1688" loading="lazy"></div>
+        <p>Одно большое поле вместо формы на каждое слово. Пишешь как в тетради, разбирать текст будет приложение.</p>
+      </figure>
+      <figure>
+        <figcaption><span class="label">03 · Слова из заметки</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/words.webp" alt="Список найденных слов с переводами и галочками" width="780" height="1688" loading="lazy"></div>
+        <p>Найденные слова сразу с переводом. Знакомые снимаешь галочкой, неточный перевод правишь карандашом, и на кнопке видно, сколько карточек добавится.</p>
+      </figure>
+      <figure>
+        <figcaption><span class="label">04 · Карточка</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/card-front.webp" alt="Лицевая сторона карточки: слово, транскрипция, кнопка озвучки" width="780" height="1688" loading="lazy"></div>
+        <p>Над словом подписано, из какой заметки оно пришло: контекст урока помогает вспомнить. Кнопка озвучки — для произношения.</p>
+      </figure>
+      <figure>
+        <figcaption><span class="label">05 · Оборот и оценка</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/card-back.webp" alt="Оборот: перевод, пример, пометка репетитора и четыре кнопки оценки" width="780" height="1688" loading="lazy"></div>
+        <p>На обороте перевод, пример и пометка репетитора. Под каждой из четырёх оценок написано, когда слово вернётся, — так интервальное повторение не выглядит чёрным ящиком.</p>
+      </figure>
+      <figure>
+        <figcaption><span class="label">06 · Итог</span></figcaption>
+        <div class="frame"><img src="img/linguaflow/result.webp" alt="Экран «Готово!» со статистикой повторения" width="780" height="1688" loading="lazy"></div>
+        <p>Короткий итог: сколько слов вспомнилось сразу и когда вернутся остальные. Место под иллюстрацию оставила для своей отрисовки.</p>
+      </figure>
+    </div>
+
+    <p class="subhead">Визуальный стиль: тетрадь репетитора</p>
+    <div class="case-head">
+      <div class="text">
+        <p>Хотелось, чтобы приложение было продолжением тетради, а не ещё одним строгим словарём. Отсюда клетка на фоне, рукописный Caveat в заголовках и выделение маркером. Основной текст набран Manrope, чтобы он легко читался.</p>
+        <p>У цвета маркера есть смысл, и он одинаковый на всех экранах.</p>
+      </div>
+      <div class="markers">
+        <div class="mk"><i style="background:#FFE45C"></i><b>На сегодня</b><span>marker/yellow</span></div>
+        <div class="mk"><i style="background:#FFB3D1"></i><b>Грамматика</b><span>marker/pink</span></div>
+        <div class="mk"><i style="background:#BFD3FF"></i><b>Новое слово</b><span>marker/blue</span></div>
+        <div class="mk"><i style="background:#9BE8C9"></i><b>Успех</b><span>marker/mint</span></div>
+      </div>
+    </div>
+
+    <p class="subhead">Состояния</p>
+    <div class="text"><p>Кроме основного сценария нарисовала случаи, когда что-то идёт не так или данных ещё нет.</p></div>
+    <div class="screens three">
+      <figure><figcaption><span class="label">Сегодня / Всё повторено</span></figcaption><div class="frame"><img src="img/linguaflow/state-done.webp" alt="Состояние: на сегодня всё повторено" width="780" height="1032" loading="lazy"></div></figure>
+      <figure><figcaption><span class="label">Сегодня / Первый запуск</span></figcaption><div class="frame"><img src="img/linguaflow/state-first.webp" alt="Состояние: первый запуск без заметок" width="780" height="1032" loading="lazy"></div></figure>
+      <figure><figcaption><span class="label">Новая заметка / Пустая</span></figcaption><div class="frame"><img src="img/linguaflow/state-empty-note.webp" alt="Состояние: пустая заметка с ошибкой и неактивной кнопкой" width="780" height="1032" loading="lazy"></div></figure>
+      <figure><figcaption><span class="label">Слова / Не нашлись</span></figcaption><div class="frame"><img src="img/linguaflow/state-no-words.webp" alt="Состояние: в заметке не нашлось английских слов" width="780" height="1032" loading="lazy"></div></figure>
+      <figure><figcaption><span class="label">Слова / Загрузка</span></figcaption><div class="frame"><img src="img/linguaflow/state-loading.webp" alt="Состояние: загрузка списка слов" width="780" height="1032" loading="lazy"></div></figure>
+      <figure><figcaption><span class="label">Любой экран / Нет связи</span></figcaption><div class="frame"><img src="img/linguaflow/state-offline.webp" alt="Состояние: баннер «Нет связи»" width="780" height="1032" loading="lazy"></div></figure>
+    </div>
+
+    <p class="subhead">Дизайн-система</p>
+    <div class="text">
+      <p>Перед экранами я собрала основу. Цвета и отступы заведены переменными (Colors и Spacing), шрифты — текстовыми стилями. Поэтому любой цвет или размер на макетах меняется в одном месте.</p>
+      <p>Все элементы — компоненты с вариантами и свойствами: у кнопки шесть вариантов, у поля ввода четыре состояния, у карточки лицевая сторона и оборот, иконки во вкладках меняются через instance swap. Экраны собраны только из копий этих компонентов, поэтому правка в мастере сразу видна везде.</p>
+    </div>
+    <figure>
+      <figcaption><span class="label">Стили и переменные</span></figcaption>
+      <div class="frame"><img src="img/linguaflow/tokens.webp" alt="Лист стилей: палитра, шкала отступов, скругления и таблица текстовых стилей" width="2000" height="1030" loading="lazy"></div>
+    </figure>
+    <figure>
+      <figcaption><span class="label">Компоненты</span></figcaption>
+      <div class="frame"><img src="img/linguaflow/components.webp" alt="Доска компонентов: кнопки, оценки, карточки, заметки, поля, таббар, иконки" width="1600" height="2911" loading="lazy"></div>
+    </figure>
+
+    <p class="subhead">Прототип</p>
+    <div class="text"><p>Экраны связаны в кликабельный прототип: со стикера попадаешь в карточки, карточка переворачивается анимацией Smart animate, оценка ведёт к итогу.</p></div>
+
+    <p class="subhead">Что дальше</p>
+    <ol class="next">
+      <li><span>Проверить сценарий на пяти студентах, которые занимаются с репетитором: понятно ли без подсказок, что слова находятся автоматически.</span></li>
+      <li><span>Добавить тёмную тему через режимы переменных — структура палитры к этому готова.</span></li>
+      <li><span>Связать макеты с бэкендом: поиск слов в заметке и расписание повторений я делаю на FastAPI.</span></li>
+    </ol>
+  </section>
+
+  <footer>
+    <h2>Контакты</h2>
+    <div class="row"><span>Telegram: @leptp</span><span>taisia.le505@gmail.com</span></div>
+  </footer>
+</main>
+
+</body>
+</html>

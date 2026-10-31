@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Портфолио Таисии Лепиловой: сайт-визитка ведущего и айдентика мероприятия «Катран».">
+<meta name="description" content="Портфолио Таисии Лепиловой: LinguaFlow, сайт-визитка ведущего и айдентика мероприятия «Катран».">
 <title>Таисия Лепилова</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +97,35 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);fon
   .grid2{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* LinguaFlow */
+.screens{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;align-items:start}
+.screens.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
+.screens .frame{border-radius:14px}
+.screens figure p{font-size:15px;color:var(--muted);margin-top:4px}
+.lead{font-size:clamp(18px,2vw,21px);max-width:62ch}
+.text{display:flex;flex-direction:column;gap:14px;max-width:70ch}
+.text p{color:var(--fg)}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.flow li{display:flex;align-items:center;gap:8px}
+.flow li span{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500}
+.flow li:not(:last-child)::after{content:"→";color:var(--muted)}
+.markers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mk{display:flex;flex-direction:column;gap:6px}
+.mk i{display:block;height:40px;border-radius:6px}
+.mk b{font-weight:500;font-size:15px}
+.mk span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.back{font-weight:500;text-decoration:none}
+.next{counter-reset:n;list-style:none;margin:0;padding:0;display:grid;gap:14px;max-width:70ch}
+.next li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px}
+.next li::before{counter-increment:n;content:counter(n,decimal-leading-zero);font-family:var(--mono);color:var(--muted);font-size:14px;padding-top:3px}
+@media (max-width:860px){
+  .screens{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .markers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){
+  .screens,.screens.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style>
 </head>
 <body>
@@ -107,8 +136,8 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);fon
     <div>
       <p class="label">Портфолио</p>
       <h1>Таисия Лепилова</h1>
-      <p class="role">Дизайн и вёрстка интерфейсов</p>
-      <p class="about">Учусь на 3 курсе МИЭМ НИУ ВШЭ («Информатика и вычислительная техника») и работаю разработчиком в проектах МИЭМ. Здесь две мои дизайн-работы: сайт, который я нарисовала в Figma и сама сверстала, и визуал для университетского мероприятия.</p>
+      <p class="role">Продуктовый дизайн и вёрстка интерфейсов</p>
+      <p class="about">Учусь на 3 курсе МИЭМ НИУ ВШЭ («Информатика и вычислительная техника») и работаю разработчиком в проектах МИЭМ. Здесь три мои дизайн-работы: мобильное приложение для повторения английских слов, сайт, который я нарисовала в Figma и сама сверстала, и визуал для университетского мероприятия.</p>
     </div>
     <div class="contacts">
       <div class="contact"><span class="label">Telegram</span><span class="v">@leptp</span></div>
@@ -118,9 +147,37 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);fon
   </section>
 
   <nav class="index" aria-label="Работы">
+    <a href="#linguaflow">LinguaFlow <span>мобильное приложение</span></a>
     <a href="#site">Сайт-визитка ведущего <span>веб · адаптив</span></a>
     <a href="#katran">«Катран» <span>айдентика мероприятия</span></a>
   </nav>
+
+  <!-- Case: LinguaFlow -->
+  <section class="case" id="linguaflow">
+    <div class="case-head">
+      <div>
+        <p class="label">Продуктовый дизайн · мобильное приложение</p>
+        <h2>LinguaFlow</h2>
+        <div class="links">
+          <a href="linguaflow.html">Читать кейс →</a>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="label">Задача</span><p>Приложение для тех, кто занимается английским с репетитором: заметку с занятия оно превращает в карточки и напоминает их повторить.</p></div>
+        <div class="fact"><span class="label">Что я сделала</span><p>Основной сценарий из шести экранов, шесть состояний, дизайн-систему на переменных и компонентах и кликабельный прототип.</p></div>
+        <div class="fact"><span class="label">Инструменты</span><p>Figma: variables, auto layout, компоненты с вариантами, прототип</p></div>
+      </div>
+    </div>
+
+    <a class="screens" href="linguaflow.html" aria-label="Открыть кейс LinguaFlow" style="text-decoration:none">
+      <figure><div class="frame"><img src="img/linguaflow/today.webp" alt="Экран «Сегодня»" width="780" height="1688" loading="lazy"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/new-note.webp" alt="Экран «Новая заметка»" width="780" height="1688" loading="lazy"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/words.webp" alt="Экран со списком найденных слов" width="780" height="1688" loading="lazy"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/card-front.webp" alt="Карточка, лицевая сторона" width="780" height="1688" loading="lazy"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/card-back.webp" alt="Карточка, оборот" width="780" height="1688" loading="lazy"></div></figure>
+      <figure><div class="frame"><img src="img/linguaflow/result.webp" alt="Экран итога" width="780" height="1688" loading="lazy"></div></figure>
+    </a>
+  </section>
 
   <!-- Case: site -->
   <section class="case" id="site">
